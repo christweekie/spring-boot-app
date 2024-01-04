@@ -1,0 +1,13 @@
+GET localhost:8080/organizers
+
+###
+
+POST localhost:8080/registrations
+Content-Type: application/json
+
+{"productId": 801, "attendeeName": "Jesper de Jong"}
+
+###
+
+GET localhost:8080/registrations/4081c3fb-50b0-4128-b1cf-91214704b0f2
+

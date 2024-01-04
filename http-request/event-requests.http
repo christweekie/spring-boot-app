@@ -1,0 +1,8 @@
+GET http://localhost:8080/events/501
+Accept: application/json
+
+###
+GET http://localhost:8080/events?organizerId=101
+Accept: application/json
+
+###
