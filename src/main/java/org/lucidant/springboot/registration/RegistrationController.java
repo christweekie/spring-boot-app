@@ -1,7 +1,9 @@
 package org.lucidant.springboot.registration;
 
 import java.util.NoSuchElementException;
+import java.util.UUID;
 import jakarta.validation.Valid;
+import org.lucidant.springboot.entity.Registration;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,18 +25,28 @@ public class RegistrationController {
 
     @PostMapping
     public Registration create(@RequestBody @Valid Registration registration) {
-        return registrationRepository.create(registration);
+        String ticketCode = UUID.randomUUID().toString();
+
+        return registrationRepository.save(new Registration(
+            1, registration.getProductId(), ticketCode, registration.getAttendeeName()));
     }
 
     @GetMapping(path = "/{ticketCode}")
     public Registration get(@PathVariable("ticketCode") String ticketCode) {
         return registrationRepository.findByTicketCode(ticketCode)
-                .orElseThrow(() -> new NoSuchElementException("Registration with ticket code " + ticketCode + " not found"));
+            .orElseThrow(() -> new NoSuchElementException("Registration with ticket code " + ticketCode + " not found"));
     }
 
     @PutMapping
     public Registration update(@RequestBody Registration registration) {
-        return registrationRepository.update(registration);
+        // Lookup the existing registration by ticket code
+        String ticketCode = registration.getTicketCode();
+        var existing = registrationRepository.findByTicketCode(ticketCode)
+            .orElseThrow(() -> new NoSuchElementException("Registration with ticket code " + ticketCode + " not found"));
+
+        // Only update the attendee name
+        return registrationRepository.save(new Registration(
+            existing.getId(), existing.getProductId(), ticketCode, registration.getAttendeeName()));
     }
 
     @DeleteMapping(path = "/{ticketCode}")

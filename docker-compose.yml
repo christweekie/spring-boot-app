@@ -16,5 +16,10 @@ services:
     ports:
       - 5432:5432
 
+#   mongo:
+#     image: mongo
+#     ports:
+#       - '27017:27017'
+
 networks:
   boot-app:

@@ -10,7 +10,6 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class HelloControllerIT {
 
