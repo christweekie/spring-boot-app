@@ -1,9 +1,10 @@
 package org.lucidant.springboot.registration;
 
 import java.util.Optional;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.lucidant.springboot.entity.Registration;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RegistrationRepository extends MongoRepository<Registration, String> {
+public interface RegistrationRepository extends JpaRepository<Registration, String> {
 
     Optional<Registration> findByTicketCode(String ticketCode);
 

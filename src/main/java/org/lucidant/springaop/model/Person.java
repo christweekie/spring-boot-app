@@ -3,12 +3,10 @@
  */
 package org.lucidant.springaop.model;
 
-/**
- * @author chrisfaulkner
- *
- */
 import java.time.LocalDate;
+import lombok.Data;
 
+@Data
 public class Person
 {
 	private String lastName;
@@ -27,19 +25,9 @@ public class Person
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(final LocalDate dateOfBirth)
-	{
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	public String getLastName()
 	{
 		return lastName;
-	}
-
-	public void setLastName(final String lastName)
-	{
-		this.lastName = lastName;
 	}
 
 	public String getFirstName()
@@ -47,8 +35,4 @@ public class Person
 		return firstName;
 	}
 
-	public void setFirstName(final String firstName)
-	{
-		this.firstName = firstName;
-	}
 }

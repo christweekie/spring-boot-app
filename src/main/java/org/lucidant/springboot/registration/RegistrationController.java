@@ -3,6 +3,7 @@ package org.lucidant.springboot.registration;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 import jakarta.validation.Valid;
+import org.lucidant.springboot.entity.Registration;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,7 @@ public class RegistrationController {
         String ticketCode = UUID.randomUUID().toString();
 
         return registrationRepository.save(new Registration(
-            null, registration.productId(), ticketCode, registration.attendeeName()));
+            1, registration.getProductId(), ticketCode, registration.getAttendeeName()));
     }
 
     @GetMapping(path = "/{ticketCode}")
@@ -39,13 +40,13 @@ public class RegistrationController {
     @PutMapping
     public Registration update(@RequestBody Registration registration) {
         // Lookup the existing registration by ticket code
-        String ticketCode = registration.ticketCode();
+        String ticketCode = registration.getTicketCode();
         var existing = registrationRepository.findByTicketCode(ticketCode)
             .orElseThrow(() -> new NoSuchElementException("Registration with ticket code " + ticketCode + " not found"));
 
         // Only update the attendee name
         return registrationRepository.save(new Registration(
-            existing.id(), existing.productId(), ticketCode, registration.attendeeName()));
+            existing.getId(), existing.getProductId(), ticketCode, registration.getAttendeeName()));
     }
 
     @DeleteMapping(path = "/{ticketCode}")
