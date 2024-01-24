@@ -9,5 +9,5 @@ Content-Type: application/json
 
 ###
 
-GET localhost:8080/registrations/4081c3fb-50b0-4128-b1cf-91214704b0f2
+GET localhost:8080/registrations/5fb8d6fc-0a60-46b2-a8af-8fbb81559d4b
 
