@@ -1,8 +1,8 @@
-INSERT INTO ORGANIZERS (id, name, description) VALUES (101, 'Globomantics', 'Globomantics Technology Corporation');
-INSERT INTO ORGANIZERS (id, name, description) VALUES (102, 'Carved Rock', 'Carved Rock Sports Equipment');
+INSERT INTO ORGANIZER (id, name, description) VALUES (101, 'Globomantics', 'Globomantics Technology Corporation');
+INSERT INTO ORGANIZER (id, name, description) VALUES (102, 'Carved Rock', 'Carved Rock Sports Equipment');
 
-INSERT INTO VENUES (id, name, street, city, country) VALUES (201, 'Globomatics Main Office', 'Test Street 325', 'New York', 'USA');
-INSERT INTO VENUES (id, name, street, city, country) VALUES (202, 'Sea View Hotel', 'Beach Boulevard 863', 'Los Angeles', 'USA');
+INSERT INTO VENUE (id, name, street, city, country) VALUES (201, 'Globomatics Main Office', 'Test Street 325', 'New York', 'USA');
+INSERT INTO VENUE (id, name, street, city, country) VALUES (202, 'Sea View Hotel', 'Beach Boulevard 863', 'Los Angeles', 'USA');
 
 INSERT INTO EVENT (id, name, organizer_id, venue_id, start_date, end_date) VALUES (501, 'Globomantics Tech Conference', 101, 201, '2023-10-02', '2023-10-04');
 INSERT INTO EVENT (id, name, organizer_id, venue_id, start_date, end_date) VALUES (502, 'Globomantics Developer Day', 101, 201, '2024-01-10', '2024-01-10');

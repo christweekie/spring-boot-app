@@ -28,4 +28,4 @@ jobs:
     steps:
       - checkout
 
-      - run: mvn test
+      - run: mvn verify
