@@ -3,7 +3,7 @@ package org.lucidant.springboot.registration;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 import jakarta.validation.Valid;
-import org.lucidant.springboot.entity.Registration;
+import org.lucidant.springboot.jpa.entity.Registration;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

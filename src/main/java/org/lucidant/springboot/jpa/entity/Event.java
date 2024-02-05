@@ -1,4 +1,4 @@
-package org.lucidant.springboot.entity;
+package org.lucidant.springboot.jpa.entity;
 
 import java.time.LocalDate;
 import jakarta.persistence.Column;

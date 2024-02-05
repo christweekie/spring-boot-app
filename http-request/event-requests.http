@@ -1,8 +1,9 @@
+### Get Event 501
 GET http://localhost:8080/events/501
 Accept: application/json
 
-###
+### Get Event by Organiser 101
 GET http://localhost:8080/events?organizerId=101
 Accept: application/json
 
-###
+### Name 2

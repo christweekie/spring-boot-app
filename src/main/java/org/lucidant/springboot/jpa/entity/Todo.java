@@ -1,29 +1,35 @@
-package org.lucidant.springboot.entity;
+package org.lucidant.springboot.jpa.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.With;
 
 @Entity
-@Table(name = "REGISTRATION")
+@Table(name = "TODO")
 @Getter
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Setter
-public class Registration {
-    @Id
-    private int id;
+@Builder
+@With
+public class Todo {
 
-    @NotNull(message = "Product id is required")
-    private int productId;
-    private String ticketCode;
-    @NotBlank(message = "Attendee name is required")
-    private String attendeeName;
+	@NotNull(message = "Product id is required")
+	@Column(nullable = false)
+	private int userId;
+	@Id
+	private int id;
+	@Column(nullable = false)
+	private String title;
+	@Column(nullable = false)
+	private boolean completed;
 }

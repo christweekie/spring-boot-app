@@ -32,9 +32,9 @@ TestRestTemplate
 
 |                  | Web MVC test ? | Test WebFlux | Invoke Mock Servlet | Over HTTP | Server side views |
 |------------------|----------------|--------------|---------------------|-----------|-------------------|
-| MockMvc          | ✅             | ❌           | ✅                  | ❌         | ✅                 |
-| WebTestClient    | ✅             | ✅           | ✅                  | ✅         | ❌                 |
-| TestRestTemplate | ✅             | ❌           | ❌                  | ✅         | ❌                 |
+| MockMvc          | ✅              | ❌            | ✅                   | ❌         | ✅                 |
+| WebTestClient    | ✅              | ✅            | ✅                   | ✅         | ❌                 |
+| TestRestTemplate | ✅              | ❌            | ❌                   | ✅         | ❌                 |
 
 `WebTestClient` is the way to go because it does everything that `TestRestTemplate` does.
 `MockMvc` is good because it doesn't have to start the whole server.
@@ -44,6 +44,8 @@ TestRestTemplate
 
 Use a mixture of each of the above named clients. 
 The Spring "test" profile starts an in-memory H2 database and tests such as `EventControllerIT` populate it with some SqlGroup annotations as provided by Spring.
+
+For testing some endpoints, which call another HTTP service, we also show the use of `MockWebServer` which uses real HTTP calls, avoids mocking the webclient. See `TodoControllerTest` 
 
 ## Unit Tests
 

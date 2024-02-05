@@ -1,5 +1,6 @@
-package org.lucidant.springboot.entity;
+package org.lucidant.springboot.jpa.entity;
 
+import java.math.BigDecimal;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,25 +12,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "VENUE")
+@Table(name = "PRODUCT")
 @Getter
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Setter
-public class Venue {
+public class Product {
 
     @Id
     private int id;
 
     @Column(nullable = false)
+    private int eventId;
+
+    @Column(nullable = false)
     private String name;
 
     @Column
-    private String street;
+    private String description;
 
-    @Column
-    private String city;
-
-    @Column
-    private String country;
+    @Column(nullable = false)
+    private BigDecimal price;
 }

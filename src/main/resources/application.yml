@@ -41,3 +41,6 @@ web:
     read-timeout-ms: 5000
     write-timeout-ms: 5000
     document-byte-buffer-size: 20971520
+
+base:
+  url: "https://jsonplaceholder.typicode.com"
