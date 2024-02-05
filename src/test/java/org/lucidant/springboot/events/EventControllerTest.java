@@ -4,12 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.lucidant.springboot.entity.Organizer;
+import org.lucidant.springboot.jpa.entity.Organizer;
+import org.lucidant.springboot.jpa.repo.EventRepository;
+import org.lucidant.springboot.jpa.repo.OrganizerRepository;
+import org.lucidant.springboot.jpa.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
@@ -30,6 +34,9 @@ class EventControllerTest {
 
     @MockBean
     private ProductRepository productRepository;
+
+    @MockBean
+    private WebClient webClient;
 
     @Test
     void testGetOrganizers() throws Exception {

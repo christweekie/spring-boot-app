@@ -1,4 +1,4 @@
-package org.lucidant.springboot.entity;
+package org.lucidant.springboot.jpa.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +17,6 @@ import lombok.Setter;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Setter
 public class Organizer {
-
     @Id
     private int id;
 

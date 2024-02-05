@@ -1,6 +1,6 @@
-package org.lucidant.springboot.events;
+package org.lucidant.springboot.jpa.repo;
 
-import org.lucidant.springboot.entity.Venue;
+import org.lucidant.springboot.jpa.entity.Venue;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
-package org.lucidant.springboot.events;
+package org.lucidant.springboot.jpa.repo;
 
 import java.util.List;
-import org.lucidant.springboot.entity.Product;
+import org.lucidant.springboot.jpa.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

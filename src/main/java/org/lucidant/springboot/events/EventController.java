@@ -2,9 +2,12 @@ package org.lucidant.springboot.events;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import org.lucidant.springboot.entity.Event;
-import org.lucidant.springboot.entity.Organizer;
-import org.lucidant.springboot.entity.Product;
+import org.lucidant.springboot.jpa.entity.Event;
+import org.lucidant.springboot.jpa.entity.Organizer;
+import org.lucidant.springboot.jpa.entity.Product;
+import org.lucidant.springboot.jpa.repo.EventRepository;
+import org.lucidant.springboot.jpa.repo.OrganizerRepository;
+import org.lucidant.springboot.jpa.repo.ProductRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,9 +23,9 @@ public class EventController {
     private final EventRepository eventRepository;
     private final ProductRepository productRepository;
 
-    public EventController(OrganizerRepository organizerRepository,
-                           EventRepository eventRepository,
-                           ProductRepository productRepository) {
+    public EventController( OrganizerRepository organizerRepository,
+                            EventRepository eventRepository,
+                            ProductRepository productRepository) {
         this.organizerRepository = organizerRepository;
         this.eventRepository = eventRepository;
         this.productRepository = productRepository;
