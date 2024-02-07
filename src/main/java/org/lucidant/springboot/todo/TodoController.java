@@ -1,9 +1,8 @@
-package org.lucidant.springboot.events;
+package org.lucidant.springboot.todo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.lucidant.springboot.jpa.entity.Todo;
 import org.lucidant.springboot.jpa.repo.ToDoRepository;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,35 +10,42 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
+/**
+ * Shows the use of the HttpClientInterface (@GetExchange, etc) annotations in Spring in reducing
+ * WebClient (Reactive) boiler-plate code. Instead of 5 lines of repetitive code constructing a request,
+ * there's one line in an interface. It's like Spring Data.
+ */
 @Slf4j
 @RestController
 public class TodoController {
 
-    private static final String PATH_PARAM_BY_ID = "/todo/{id}";
-    private final WebClient webClient;
+    private final TodoClient todoWebClient;
     private final ToDoRepository repository;
 
-    public TodoController( WebClient webClient,
-                            ToDoRepository repository) {
-        this.webClient = webClient;
+    public TodoController(final TodoClient client,
+                          final ToDoRepository repository) {
+        this.todoWebClient = client;
         this.repository = repository;
     }
 
-    @GetMapping(path = "/todos/{id}")
-    public Mono<Todo> getTodo(@PathVariable("id") final int todoId) {
-        return webClient.get()
-            .uri(PATH_PARAM_BY_ID, todoId)
-            .header(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_VALUE)
-            .retrieve()
-            .bodyToMono(Todo.class);
+    @GetMapping(path = "/todos/http/{id}")
+    public Todo getTodoById(@PathVariable("id") int todoId) {
+        return todoWebClient.getTodoById(todoId);
     }
 
+    @SuppressWarnings("java:S1135") // It's not a TO-DO, it's the name of a class :-)
+    @GetMapping(path = "/todos/{id}")
+    public Mono<Todo> getTodoByIdMono(@PathVariable("id") int todoId) {
 
+//        return webClient_get()
+//            _uri(PATH_PARAM_BY_ID, todoId)
+//            _header(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_VALUE)
+//            _retrieve()
+//            _bodyToMono(Todo.class)_
+        return todoWebClient.getTodoByIdMono(todoId);
+    }
 
     @SuppressWarnings("BlockingMethodInNonBlockingContext")
     @PutMapping(path="/todo/{id}")
