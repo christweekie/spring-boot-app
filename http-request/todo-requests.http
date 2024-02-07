@@ -1,0 +1,5 @@
+### Get TODO 1
+GET http://localhost:8080/todos/1
+Accept: application/json
+
+

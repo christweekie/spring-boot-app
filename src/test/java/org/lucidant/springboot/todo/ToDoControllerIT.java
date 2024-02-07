@@ -1,4 +1,4 @@
-package org.lucidant.springboot.events;
+package org.lucidant.springboot.todo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +15,9 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+/**
+ * Here we start a complete SpringBoot Application and hit it with the `WebTestClient`
+ */
 @Slf4j
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -28,6 +31,9 @@ class ToDoControllerIT {
 
     @Autowired
     private WebTestClient webTestClient;
+
+    @Autowired
+    private TodoClient todoClient;
 
     @BeforeEach
     void beforeEach() {

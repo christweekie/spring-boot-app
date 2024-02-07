@@ -2,7 +2,7 @@ info:
   app:
     name: Sample Spring Boot App
     version: 1.0
-default_id: 1
+
 server:
   port: 8080
 
