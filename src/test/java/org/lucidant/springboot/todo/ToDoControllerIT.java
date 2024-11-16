@@ -1,6 +1,7 @@
 package org.lucidant.springboot.todo;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.lucidant.springboot.jpa.entity.Todo;
@@ -61,12 +62,12 @@ class ToDoControllerIT {
             ;
 
         // Assert
-        final var todoSaved = repository.findById(1).get();
-
-        assertThat(todoSaved.getId()).isEqualTo(1);
-        assertThat(todoSaved.getTitle()).isEqualTo("Sent title");
-        assertThat(todoSaved.isCompleted()).isTrue();
-        assertThat(todoSaved.getUserId()).isEqualTo(100);
+        repository.findById(1).ifPresentOrElse((s) -> {
+            assertThat(s.getId()).isEqualTo(1);
+            assertThat(s.getTitle()).isEqualTo("Sent title");
+            assertThat(s.isCompleted()).isTrue();
+            assertThat(s.getUserId()).isEqualTo(100);
+        }, Assertions::fail);
     }
 
 }

@@ -30,14 +30,16 @@ spring:
         trace: true
         web-allow-others: false
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
-    password:
+    url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    schema: classpath:data/create.sql
+#     data: classpath:data-h2.sql
   jpa:
-    properties:
-      hibernate:
-        ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+#     hibernate:
+#       ddl-auto: create-drop
 
 health:
   default-ping-path: /ping
