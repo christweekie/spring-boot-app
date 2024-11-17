@@ -53,7 +53,10 @@ Yes, we have them.
 
 
 #### Spring Boot Actuator
-There are the built-in health and info endpoints which are enabled with the test profile.
+There are the built-in health and info endpoints which are enabled with the test profile. Also exposed are logger (also update), beans, conditions. These can be exercised with HTTP requests defined in the `server-requests.http`. 
+
+### Actuator - metrics 
+This uses standard micrometer. Calling the metrics endpoint (part of the actuator) tells you what is available. 
 
 ### Other Project Features 
 

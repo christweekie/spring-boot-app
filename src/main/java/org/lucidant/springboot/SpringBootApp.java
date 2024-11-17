@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication()
-@EntityScan(basePackages = "org.lucidant.springboot.jpa.entity")
+@EntityScan(basePackages = "org.lucidant.springboot.jpa")
 public class SpringBootApp {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootApp.class, args);

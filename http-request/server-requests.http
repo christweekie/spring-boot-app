@@ -1,8 +1,48 @@
 GET http://localhost:8080/health
 Accept: application/json
 
-###
+### General INFO
 GET http://localhost:8080/info
 Accept: application/json
 
+### ENV vars
+GET http://localhost:8080/env
+Accept: application/json
+
+### CONDITIONS for boot components creation
+GET http://localhost:8080/conditions
+Accept: application/json
+
+### LOGGERS
+GET http://localhost:8080/loggers
+Accept: application/json
+
+### MAPPINGS of endpoints to paths
+GET http://localhost:8080/mappings
+Accept: application/json
+
 ###
+GET http://localhost:8080/
+Accept: application/json
+
+### Change logger level - should give 204 (no content)
+POST http://localhost:8080/loggers/org.springframework.web
+Content-Type: application/json
+
+{"configuredLevel": "DEBUG"}
+
+### ALL AVAILABLE METRICS
+GET http://localhost:8080/metrics
+Accept: application/json
+
+### METRICS - http.server.requests
+GET http://localhost:8080/metrics/http.server.requests
+Accept: application/json
+
+### METRICS - http.server.requests
+GET http://localhost:8080/metrics/http.server.requests?tag=method:POST&tag=uri:/registrations
+Accept: application/json
+
+### METRICS - http.server.requests
+GET http://localhost:8080/metrics/http.server.requests?tag=uri:/todos/1&tag=method:GET
+Accept: application/json
